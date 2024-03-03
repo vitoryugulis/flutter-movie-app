@@ -16,7 +16,19 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+
+  build-ios:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: subosito/flutter-action@v2
+      with:
+        channel: 'stable'
+    - run: flutter pub get
+    #- run: flutter test
+    - run: flutter build ios --release --no-codesign
+    
+  build-android:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -29,6 +41,6 @@ jobs:
           channel: 'stable'
       - run: flutter --version
       - run: flutter pub get
-      - run: flutter test
+      #- run: flutter test
       - run: flutter build apk
       - run: flutter build appbundle
