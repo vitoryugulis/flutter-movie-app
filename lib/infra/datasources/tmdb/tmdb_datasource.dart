@@ -2,27 +2,30 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_movie_app/domain/entities/details_entity.dart';
-import 'package:flutter_movie_app/domain/entities/genres_entity.dart';
+import 'package:flutter_movie_app/domain/entities/movie_genres_entity.dart';
+import 'package:flutter_movie_app/domain/entities/series_genres_entity.dart';
 import 'package:flutter_movie_app/infra/datasources/content_datasource.dart';
 import 'package:flutter_movie_app/infra/models/details_model.dart';
-import 'package:flutter_movie_app/infra/models/genres_model.dart';
+import 'package:flutter_movie_app/infra/models/movie_genres_model.dart';
+import 'package:flutter_movie_app/infra/models/series_genres_model.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:injectable/injectable.dart';
 
+@Singleton(as: ContentDatasource)
 class TMDBDatasource implements ContentDatasource {
-  final http.Client client;
-  final url = 'https://api.themoviedb.org/3/';
+  @lazySingleton
+  http.Client get client => http.Client();
+  final url = 'api.themoviedb.org';
   final token = dotenv.env['BEARER_TOKEN'];
-
-  TMDBDatasource(this.client);
 
   @override
   Future<Either<Exception, DetailsEntity>> getConfiguration() async {
-    const path = 'configuration';
+    const path = '3/configuration';
     try {
       final result = await client.get(Uri.https(url, path, {'language': 'pt'}),
-          headers: {'Authorization': 'Bearer'});
+          headers: {'Authorization': 'Bearer $token'});
       if (result.statusCode != HttpStatus.ok) {
         return Left(Exception('getConfiguration request error'));
       }
@@ -34,15 +37,15 @@ class TMDBDatasource implements ContentDatasource {
   }
 
   @override
-  Future<Either<Exception, GenresEntity>> getMovieGenres() async {
-    const path = 'genre/movie/list';
+  Future<Either<Exception, MovieGenresEntity>> getMovieGenres() async {
+    const path = '3/genre/movie/list';
     try {
       final result = await client.get(Uri.https(url, path, {'language': 'pt'}),
-          headers: {'Authorization': 'Bearer'});
+          headers: {'Authorization': 'Bearer $token'});
       if (result.statusCode != HttpStatus.ok) {
         return Left(Exception('getMovieGenres request error'));
       }
-      final model = GenresModel.fromJson(jsonDecode(result.body));
+      final model = MovieGenresModel.fromJson(jsonDecode(result.body));
       return Right(model.toEntity());
     } catch (e) {
       return Left(Exception('getMovieGenres unexpected error'));
@@ -50,15 +53,15 @@ class TMDBDatasource implements ContentDatasource {
   }
 
   @override
-  Future<Either<Exception, GenresEntity>> getSeriesGenres() async {
-    const path = 'genre/tv/list';
+  Future<Either<Exception, SeriesGenresEntity>> getSeriesGenres() async {
+    const path = '3/genre/tv/list';
     try {
       final result = await client.get(Uri.https(url, path, {'language': 'pt'}),
-          headers: {'Authorization': 'Bearer'});
+          headers: {'Authorization': 'Bearer $token'});
       if (result.statusCode != HttpStatus.ok) {
         return Left(Exception('getSeriesGenres request error'));
       }
-      final model = GenresModel.fromJson(jsonDecode(result.body));
+      final model = SeriesGenresModel.fromJson(jsonDecode(result.body));
       return Right(model.toEntity());
     } catch (e) {
       return Left(Exception('getSeriesGenres unexpected error'));
