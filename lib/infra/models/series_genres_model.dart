@@ -1,19 +1,19 @@
-import 'package:flutter_movie_app/domain/entities/genres_entity.dart';
+import 'package:flutter_movie_app/domain/entities/series_genres_entity.dart';
 
-class GenresModel {
-  GenresModel({
+class SeriesGenresModel {
+  SeriesGenresModel({
     required this.genres,
   });
   late final List<ItemModel> genres;
 
-  GenresModel.fromJson(Map<String, dynamic> json) {
+  SeriesGenresModel.fromJson(Map<String, dynamic> json) {
     genres = List.from(json['genres'])
         .map((genre) => ItemModel.fromJson(genre))
         .toList();
   }
 
-  GenresEntity toEntity() {
-    return GenresEntity(
+  SeriesGenresEntity toEntity() {
+    return SeriesGenresEntity(
         genres: genres.map((e) => ItemEntity(id: e.id, name: e.name)).toList());
   }
 }

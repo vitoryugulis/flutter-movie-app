@@ -1,5 +1,5 @@
-class GenresEntity {
-  GenresEntity({
+class MovieGenresEntity {
+  MovieGenresEntity({
     required this.genres,
   });
   late final List<ItemEntity> genres;
