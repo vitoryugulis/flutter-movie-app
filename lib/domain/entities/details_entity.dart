@@ -3,12 +3,12 @@ class DetailsEntity {
     required this.images,
     required this.changeKeys,
   });
-  late final Images images;
-  late final List<String> changeKeys;
+   ImagesEntity images;
+   List<String> changeKeys;
 }
 
-class Images {
-  Images({
+class ImagesEntity {
+  ImagesEntity({
     required this.baseUrl,
     required this.secureBaseUrl,
     required this.backdropSizes,
@@ -17,11 +17,11 @@ class Images {
     required this.profileSizes,
     required this.stillSizes,
   });
-  late final String baseUrl;
-  late final String secureBaseUrl;
-  late final List<String> backdropSizes;
-  late final List<String> logoSizes;
-  late final List<String> posterSizes;
-  late final List<String> profileSizes;
-  late final List<String> stillSizes;
+   String baseUrl;
+   String secureBaseUrl;
+   List<String> backdropSizes;
+   List<String> logoSizes;
+   List<String> posterSizes;
+   List<String> profileSizes;
+   List<String> stillSizes;
 }
