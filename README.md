@@ -9,3 +9,4 @@ A Movie App.
 - https://docs.flutter.dev/data-and-backend/state-mgmt/simple
 - https://pub.dev/packages/injectable
 - https://pub.dev/packages/provider
+- https://github.com/DeividWillyan/Flutter-CleanArchitecture
