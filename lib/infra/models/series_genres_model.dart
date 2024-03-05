@@ -1,33 +1,31 @@
 import 'package:flutter_movie_app/domain/entities/series_genres_entity.dart';
 
-class SeriesGenresModel {
+class SeriesGenresModel extends SeriesGenresEntity {
   SeriesGenresModel({
-    required this.genres,
+    required super.genres,
   });
-  late final List<ItemModel> genres;
 
-  SeriesGenresModel.fromJson(Map<String, dynamic> json) {
-    genres = List.from(json['genres'])
-        .map((genre) => ItemModel.fromJson(genre))
-        .toList();
-  }
+  SeriesGenresModel.fromJson(Map<String, dynamic> json)
+      : super(
+          genres: List.from(json['genres'])
+              .map((genre) => ItemModel.fromJson(genre))
+              .toList(),
+        );
 
   SeriesGenresEntity toEntity() {
-    return SeriesGenresEntity(
-        genres: genres.map((e) => ItemEntity(id: e.id, name: e.name)).toList());
+    return SeriesGenresEntity(genres: genres);
   }
 }
 
-class ItemModel {
+class ItemModel extends ItemEntity {
   ItemModel({
-    required this.id,
-    required this.name,
+    required super.id,
+    required super.name,
   });
-  late final int id;
-  late final String name;
 
-  ItemModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-  }
+  ItemModel.fromJson(Map<String, dynamic> json)
+      : super(
+          id: json['id'],
+          name: json['name'],
+        );
 }

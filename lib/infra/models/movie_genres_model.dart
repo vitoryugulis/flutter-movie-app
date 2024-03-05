@@ -1,16 +1,15 @@
 import 'package:flutter_movie_app/domain/entities/movie_genres_entity.dart';
 
-class MovieGenresModel {
+class MovieGenresModel extends MovieGenresEntity {
   MovieGenresModel({
-    required this.genres,
+    required super.genres,
   });
-  late final List<ItemModel> genres;
 
-  MovieGenresModel.fromJson(Map<String, dynamic> json) {
-    genres = List.from(json['genres'])
-        .map((genre) => ItemModel.fromJson(genre))
-        .toList();
-  }
+  MovieGenresModel.fromJson(Map<String, dynamic> json)
+      : super(
+            genres: List.from(json['genres'])
+                .map((genre) => ItemModel.fromJson(genre))
+                .toList());
 
   MovieGenresEntity toEntity() {
     return MovieGenresEntity(
@@ -18,16 +17,12 @@ class MovieGenresModel {
   }
 }
 
-class ItemModel {
+class ItemModel extends ItemEntity {
   ItemModel({
-    required this.id,
-    required this.name,
+    required super.id,
+    required super.name,
   });
-  late final int id;
-  late final String name;
 
-  ItemModel.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    name = json['name'];
-  }
+  ItemModel.fromJson(Map<String, dynamic> json)
+      : super(id: json['id'], name: json['name']);
 }

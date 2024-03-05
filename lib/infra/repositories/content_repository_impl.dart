@@ -1,4 +1,6 @@
 import 'package:flutter_movie_app/domain/entities/details_entity.dart';
+import 'package:flutter_movie_app/domain/entities/discover_movies_entity.dart';
+import 'package:flutter_movie_app/domain/entities/discover_series_entity.dart';
 import 'package:flutter_movie_app/domain/entities/movie_genres_entity.dart';
 import 'package:flutter_movie_app/domain/entities/series_genres_entity.dart';
 import 'package:flutter_movie_app/domain/repositories/content_repository.dart';
@@ -18,9 +20,10 @@ class ContentRepositoryImpl extends ContentRepository {
     final result = await datasource.getConfiguration();
     return result.fold(
       (error) => Left(error),
-      (success) {
-        getIt.registerSingleton<DetailsEntity>(success);
-        return Right(success);
+      (model) {
+        final entity = model.toEntity();
+        getIt.registerSingleton<DetailsEntity>(entity);
+        return Right(entity);
       },
     );
   }
@@ -30,9 +33,10 @@ class ContentRepositoryImpl extends ContentRepository {
     final result = await datasource.getMovieGenres();
     return result.fold(
       (error) => Left(error),
-      (success) {
-        getIt.registerSingleton<MovieGenresEntity>(success);
-        return Right(success);
+      (model) {
+        final entity = model.toEntity();
+        getIt.registerSingleton<MovieGenresEntity>(entity);
+        return Right(entity);
       },
     );
   }
@@ -42,9 +46,36 @@ class ContentRepositoryImpl extends ContentRepository {
     final result = await datasource.getSeriesGenres();
     return result.fold(
       (error) => Left(error),
-      (success) {
-        getIt.registerSingleton<SeriesGenresEntity>(success);
-        return Right(success);
+      (model) {
+        final entity = model.toEntity();
+        getIt.registerSingleton<SeriesGenresEntity>(entity);
+        return Right(entity);
+      },
+    );
+  }
+
+  @override
+  Future<Either<Exception, DiscoverSeriesEntity>> getSeries() async {
+    final result = await datasource.discoverSeries();
+    return result.fold(
+      (error) => Left(error),
+      (model) {
+        final entity = model;
+        getIt.registerSingleton<DiscoverSeriesEntity>(entity);
+        return Right(entity);
+      },
+    );
+  }
+
+  @override
+  Future<Either<Exception, DiscoverMoviesEntity>> getMovies() async {
+    final result = await datasource.discoverMovies();
+    return result.fold(
+      (error) => Left(error),
+      (model) {
+        final entity = model;
+        getIt.registerSingleton<DiscoverMoviesEntity>(entity);
+        return Right(entity);
       },
     );
   }

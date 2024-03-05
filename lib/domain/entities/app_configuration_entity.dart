@@ -9,7 +9,7 @@ class AppConfigurationEntity {
     required this.seriesGenres,
   });
 
-  late final DetailsEntity details;
-  late final MovieGenresEntity movieGenres;
-  late final SeriesGenresEntity seriesGenres;
+   DetailsEntity details;
+   MovieGenresEntity movieGenres;
+   SeriesGenresEntity seriesGenres;
 }

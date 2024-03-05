@@ -1,59 +1,41 @@
 import 'package:flutter_movie_app/domain/entities/details_entity.dart';
 
-class DetailsModel {
+class DetailsModel extends DetailsEntity {
   DetailsModel({
-    required this.images,
-    required this.changeKeys,
+    required super.images,
+    required super.changeKeys,
   });
-  late final ImagesModel images;
-  late final List<String> changeKeys;
 
-  DetailsModel.fromJson(Map<String, dynamic> json) {
-    images = ImagesModel.fromJson(json['images']);
-    changeKeys = List.castFrom<dynamic, String>(json['change_keys']);
-  }
+  DetailsModel.fromJson(Map<String, dynamic> json)
+      : super(
+          images: ImagesModel.fromJson(json['images']),
+          changeKeys: List<String>.from(json['change_keys']),
+        );
 
   DetailsEntity toEntity() {
-    return DetailsEntity(
-      changeKeys: changeKeys,
-      images: Images(
-        backdropSizes: images.backdropSizes,
-        baseUrl: images.baseUrl,
-        logoSizes: images.logoSizes,
-        posterSizes: images.posterSizes,
-        profileSizes: images.profileSizes,
-        secureBaseUrl: images.secureBaseUrl,
-        stillSizes: images.stillSizes,
-      ),
-    );
+    return DetailsEntity(images: images, changeKeys: changeKeys);
   }
 }
 
-class ImagesModel {
+class ImagesModel extends ImagesEntity {
   ImagesModel({
-    required this.baseUrl,
-    required this.secureBaseUrl,
-    required this.backdropSizes,
-    required this.logoSizes,
-    required this.posterSizes,
-    required this.profileSizes,
-    required this.stillSizes,
+    required super.baseUrl,
+    required super.secureBaseUrl,
+    required super.backdropSizes,
+    required super.logoSizes,
+    required super.posterSizes,
+    required super.profileSizes,
+    required super.stillSizes,
   });
-  late final String baseUrl;
-  late final String secureBaseUrl;
-  late final List<String> backdropSizes;
-  late final List<String> logoSizes;
-  late final List<String> posterSizes;
-  late final List<String> profileSizes;
-  late final List<String> stillSizes;
 
-  ImagesModel.fromJson(Map<String, dynamic> json) {
-    baseUrl = json['base_url'];
-    secureBaseUrl = json['secure_base_url'];
-    backdropSizes = List.castFrom<dynamic, String>(json['backdrop_sizes']);
-    logoSizes = List.castFrom<dynamic, String>(json['logo_sizes']);
-    posterSizes = List.castFrom<dynamic, String>(json['poster_sizes']);
-    profileSizes = List.castFrom<dynamic, String>(json['profile_sizes']);
-    stillSizes = List.castFrom<dynamic, String>(json['still_sizes']);
-  }
+  ImagesModel.fromJson(Map<String, dynamic> json)
+      : super(
+          baseUrl: json['base_url'],
+          secureBaseUrl: json['secure_base_url'],
+          backdropSizes: List<String>.from(json['backdrop_sizes']),
+          logoSizes: List<String>.from(json['logo_sizes']),
+          posterSizes: List<String>.from(json['poster_sizes']),
+          profileSizes: List<String>.from(json['profile_sizes']),
+          stillSizes: List<String>.from(json['still_sizes']),
+        );
 }
