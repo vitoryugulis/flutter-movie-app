@@ -5,7 +5,7 @@ import 'package:flutter_movie_app/presenter/states/app_states.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 
-@LazySingleton()
+@injectable
 class MoviesController extends ChangeNotifier {
   final ShowMoviesUseCase _showMoviesUseCase;
   AppState appState = LoadingState();

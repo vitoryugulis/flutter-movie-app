@@ -9,7 +9,7 @@ class DetailsModel extends DetailsEntity {
   DetailsModel.fromJson(Map<String, dynamic> json)
       : super(
           images: ImagesModel.fromJson(json['images']),
-          changeKeys: List<String>.from(json['change_keys']),
+          changeKeys: List<String>.from(json['change_keys'] ?? []),
         );
 
   DetailsEntity toEntity() {
@@ -30,12 +30,12 @@ class ImagesModel extends ImagesEntity {
 
   ImagesModel.fromJson(Map<String, dynamic> json)
       : super(
-          baseUrl: json['base_url'],
-          secureBaseUrl: json['secure_base_url'],
-          backdropSizes: List<String>.from(json['backdrop_sizes']),
-          logoSizes: List<String>.from(json['logo_sizes']),
-          posterSizes: List<String>.from(json['poster_sizes']),
-          profileSizes: List<String>.from(json['profile_sizes']),
-          stillSizes: List<String>.from(json['still_sizes']),
+          baseUrl: json['base_url'] ?? '',
+          secureBaseUrl: json['secure_base_url'] ?? '',
+          backdropSizes: List<String>.from(json['backdrop_sizes'] ?? []),
+          logoSizes: List<String>.from(json['logo_sizes'] ?? []),
+          posterSizes: List<String>.from(json['poster_sizes'] ?? []),
+          profileSizes: List<String>.from(json['profile_sizes'] ?? []),
+          stillSizes: List<String>.from(json['still_sizes'] ?? []),
         );
 }

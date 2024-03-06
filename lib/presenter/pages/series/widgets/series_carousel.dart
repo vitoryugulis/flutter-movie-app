@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/domain/entities/discover_entity.dart';
 import 'package:flutter_movie_app/presenter/utils/styles.dart';
 
-class MoviesCarousel extends StatelessWidget {
-  final DiscoverEntity movies;
+class SeriesCarousel extends StatelessWidget {
+  final DiscoverEntity series;
   final String carouselTitle;
-  const MoviesCarousel({
+  const SeriesCarousel({
     required this.carouselTitle,
-    required this.movies,
+    required this.series,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    movies.results.shuffle();
+    series.results.shuffle();
     return Column(
       children: [
         Container(
@@ -28,9 +28,9 @@ class MoviesCarousel extends StatelessWidget {
           height: 200,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: movies.results.length,
+            itemCount: series.results.length,
             itemBuilder: (context, index) {
-              final movie = movies.results[index];
+              final movie = series.results[index];
               return Container(
                 margin: const EdgeInsets.symmetric(horizontal: 4),
                 child: ClipRRect(
@@ -41,11 +41,7 @@ class MoviesCarousel extends StatelessWidget {
                     errorWidget: (context, url, error) => Container(
                       width: 140,
                       color: Colors.indigo,
-                      child: Center(
-                          child: Text(
-                        'Sem poster :(',
-                        style: Styles.smText,
-                      )),
+                      child: Center(child: Text('Sem poster :(', style: Styles.smText,)),
                     ),
                   ),
                 ),

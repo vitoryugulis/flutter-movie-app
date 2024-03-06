@@ -10,11 +10,12 @@ class DiscoverModel extends DiscoverEntity {
 
   DiscoverModel.fromJson(Map<String, dynamic> json)
       : super(
-          page: json['page'],
+          page: json['page'] ?? '',
           results: List<Results>.from(
-              json['results'].map((x) => Results.fromJson(x))),
-          totalPages: json['total_pages'],
-          totalResults: json['total_results'],
+            json['results']?.map((x) => Results.fromJson(x)),
+          ),
+          totalPages: json['total_pages'] ?? '',
+          totalResults: json['total_results'] ?? '',
         );
 
   DiscoverEntity toEntity() {
@@ -35,6 +36,7 @@ class Results extends ResultEntity {
     required super.id,
     required super.originalLanguage,
     required super.originalTitle,
+    required super.firstAirDate,
     required super.overview,
     required super.popularity,
     required super.posterPath,
@@ -47,19 +49,20 @@ class Results extends ResultEntity {
 
   Results.fromJson(Map<String, dynamic> json)
       : super(
-          adult: json['adult'],
-          backdropPath: json['backdrop_path'],
-          genreIds: List<int>.from(json['genre_ids']),
-          id: json['id'],
-          originalLanguage: json['original_language'],
-          originalTitle: json['original_title'],
-          overview: json['overview'],
-          popularity: json['popularity'],
-          posterPath: json['poster_path'],
-          releaseDate: json['release_date'],
-          title: json['title'],
-          video: json['video'],
-          voteAverage: json['vote_average'],
-          voteCount: json['vote_count'],
+          adult: json['adult'] ?? '',
+          backdropPath: json['backdrop_path'] ?? '',
+          genreIds: List<int>.from(json['genre_ids'] ?? []),
+          id: json['id'] ?? '',
+          originalLanguage: json['original_language'] ?? '',
+          originalTitle: json['original_title'] ?? '',
+          firstAirDate: json['first_air_date'] ?? '',
+          overview: json['overview'] ?? '',
+          popularity: json['popularity'] ?? 0,
+          posterPath: json['poster_path'] ?? '',
+          releaseDate: json['release_date'] ?? '',
+          title: json['title'] ?? '',
+          video: json['video'] ?? false,
+          voteAverage: json['vote_average'] ?? 0,
+          voteCount: json['vote_count'] ?? 0,
         );
 }
