@@ -1,4 +1,4 @@
-import 'package:flutter_movie_app/domain/entities/series_genres_entity.dart';
+import 'package:flutter_movie_app/domain/entities/series/series_genres_entity.dart';
 
 class SeriesGenresModel extends SeriesGenresEntity {
   SeriesGenresModel({

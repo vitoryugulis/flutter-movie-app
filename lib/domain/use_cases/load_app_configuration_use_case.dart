@@ -1,7 +1,7 @@
 import 'package:flutter_movie_app/domain/entities/app_configuration_entity.dart';
 import 'package:flutter_movie_app/domain/entities/details_entity.dart';
-import 'package:flutter_movie_app/domain/entities/movie_genres_entity.dart';
-import 'package:flutter_movie_app/domain/entities/series_genres_entity.dart';
+import 'package:flutter_movie_app/domain/entities/movies/movie_genres_entity.dart';
+import 'package:flutter_movie_app/domain/entities/series/series_genres_entity.dart';
 import 'package:flutter_movie_app/domain/repositories/content_repository.dart';
 import 'package:flutter_movie_app/injection.dart';
 import 'package:fpdart/fpdart.dart';

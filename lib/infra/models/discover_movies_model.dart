@@ -1,4 +1,4 @@
-import 'package:flutter_movie_app/domain/entities/discover_movies_entity.dart';
+import 'package:flutter_movie_app/domain/entities/movies/discover_movies_entity.dart';
 
 class DiscoverMoviesModel extends DiscoverMoviesEntity {
   DiscoverMoviesModel({

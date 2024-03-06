@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_movie_app/injection.dart';
+import 'package:flutter_movie_app/presenter/pages/movies/movies_page.dart';
 import 'package:flutter_movie_app/presenter/pages/splash/splash_page.dart';
+import 'package:flutter_movie_app/presenter/utils/navigation.dart';
 
 class FlutterMovieApp extends StatelessWidget {
   const FlutterMovieApp({super.key});
@@ -7,12 +10,17 @@ class FlutterMovieApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: getIt<Navigation>().navigatorKey,
       title: 'A Movie App',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.tealAccent),
         useMaterial3: true,
       ),
-      home: const SplashPage(),
+      initialRoute: SplashPage.route,
+      routes: {
+        SplashPage.route: (context) => const SplashPage(),
+        MoviesPage.route: (context) => const MoviesPage(),
+      },
     );
   }
 }

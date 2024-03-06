@@ -1,6 +1,6 @@
 import 'package:flutter_movie_app/domain/entities/details_entity.dart';
-import 'package:flutter_movie_app/domain/entities/movie_genres_entity.dart';
-import 'package:flutter_movie_app/domain/entities/series_genres_entity.dart';
+import 'package:flutter_movie_app/domain/entities/movies/movie_genres_entity.dart';
+import 'package:flutter_movie_app/domain/entities/series/series_genres_entity.dart';
 
 class AppConfigurationEntity {
   AppConfigurationEntity({
