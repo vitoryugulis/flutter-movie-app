@@ -7,7 +7,7 @@ class SeriesGenresModel extends SeriesGenresEntity {
 
   SeriesGenresModel.fromJson(Map<String, dynamic> json)
       : super(
-          genres: List.from(json['genres'])
+          genres: List.from(json['genres'] ?? [])
               .map((genre) => ItemModel.fromJson(genre))
               .toList(),
         );
@@ -25,7 +25,7 @@ class ItemModel extends ItemEntity {
 
   ItemModel.fromJson(Map<String, dynamic> json)
       : super(
-          id: json['id'],
-          name: json['name'],
+          id: json['id'] ?? '',
+          name: json['name'] ?? '',
         );
 }

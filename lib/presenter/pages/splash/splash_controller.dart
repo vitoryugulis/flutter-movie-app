@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_movie_app/domain/entities/app_configuration_entity.dart';
 import 'package:flutter_movie_app/domain/use_cases/load_app_configuration_use_case.dart';
-import 'package:flutter_movie_app/presenter/pages/movies/movies_page.dart';
+import 'package:flutter_movie_app/presenter/pages/home/home_page.dart';
 import 'package:flutter_movie_app/presenter/states/app_states.dart';
 import 'package:flutter_movie_app/presenter/utils/navigation.dart';
 import 'package:fpdart/fpdart.dart';
@@ -25,7 +25,7 @@ class SplashController extends ChangeNotifier {
     }, (configuration) async {
       GetIt.instance.registerSingleton<AppConfigurationEntity>(configuration);
       await Future.delayed(const Duration(seconds: 1));
-      _navigation.go(MoviesPage.route);
+      _navigation.go(HomePage.route);
       return Right(configuration);
     });
   }

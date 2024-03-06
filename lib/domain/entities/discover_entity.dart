@@ -19,6 +19,7 @@ class ResultEntity {
     required this.id,
     required this.originalLanguage,
     required this.originalTitle,
+    required this.firstAirDate,
     required this.overview,
     required this.popularity,
     required this.posterPath,
@@ -34,6 +35,7 @@ class ResultEntity {
   int id;
   String originalLanguage;
   String originalTitle;
+  String firstAirDate;
   String overview;
   double popularity;
   String posterPath;

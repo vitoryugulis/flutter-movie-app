@@ -16,19 +16,19 @@ class SeriesModel extends SeriesEntity {
 
   SeriesModel.fromJson(Map<String, dynamic> json)
       : super(
-          backdropPath: json['backdrop_path'],
+          backdropPath: json['backdrop_path'] ?? '',
           createdBy: List.from(json['created_by'])
               .map((e) => CreatedByModel.fromJson(e))
               .toList(),
           firstAirDate: json['first_air_date'],
-          genres: List.from(json['genres'])
+          genres: List.from(json['genres'] ?? [])
               .map((e) => SeriesGenresModel.fromJson(e))
               .toList(),
-          name: json['name'],
-          overview: json['overview'],
-          posterPath: json['poster_path'],
-          voteAverage: json['vote_average'],
-          voteCount: json['vote_count'],
+          name: json['name'] ?? '',
+          overview: json['overview'] ?? '',
+          posterPath: json['poster_path'] ?? '',
+          voteAverage: json['vote_average'] ?? 0,
+          voteCount: json['vote_count'] ?? 0,
         );
 
   SeriesEntity toEntity() {
@@ -57,10 +57,10 @@ class CreatedByModel extends CreatedByEntity {
 
   CreatedByModel.fromJson(Map<String, dynamic> json)
       : super(
-          id: json['id'],
-          creditId: json['credit_id'],
-          name: json['name'],
-          gender: json['gender'],
-          profilePath: json['profile_path'],
+          id: json['id'] ?? 0,
+          creditId: json['credit_id'] ?? '',
+          name: json['name'] ?? '',
+          gender: json['gender'] ?? 0,
+          profilePath: json['profile_path'] ?? '',
         );
 }

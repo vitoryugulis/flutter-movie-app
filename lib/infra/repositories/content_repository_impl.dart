@@ -61,7 +61,6 @@ class ContentRepositoryImpl extends ContentRepository {
       (error) => Left(error),
       (model) {
         final entity = model;
-        getIt.registerSingleton<DiscoverSeriesEntity>(entity);
         return Right(entity);
       },
     );
@@ -74,7 +73,6 @@ class ContentRepositoryImpl extends ContentRepository {
       (error) => Left(error),
       (model) {
         final entity = model;
-        getIt.registerSingleton<DiscoverMoviesEntity>(entity);
         return Right(entity);
       },
     );
