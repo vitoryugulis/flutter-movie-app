@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/injection.dart';
 import 'package:flutter_movie_app/presenter/pages/series/series_controller.dart';
-import 'package:flutter_movie_app/presenter/pages/series/widgets/series_carousel.dart';
+import 'package:flutter_movie_app/presenter/pages/series/widgets/series_carousel_widget.dart';
 import 'package:flutter_movie_app/presenter/shared_widgets/failure_widget.dart';
 import 'package:flutter_movie_app/presenter/shared_widgets/loading_widget.dart';
 import 'package:flutter_movie_app/presenter/states/app_states.dart';
@@ -46,6 +46,8 @@ class _SeriesPageState extends State<SeriesPage> {
                       SeriesCarousel(
                         carouselTitle: 'Em exibição hoje',
                         series: series.airingToday,
+                        onLongPress: (favorite) =>
+                            controller.saveFavorite(favorite),
                       ),
                       const SizedBox(
                         height: 20,
@@ -53,6 +55,8 @@ class _SeriesPageState extends State<SeriesPage> {
                       SeriesCarousel(
                         carouselTitle: 'Mais bem avaliadas',
                         series: series.topRated,
+                        onLongPress: (favorite) =>
+                            controller.saveFavorite(favorite),
                       ),
                       const SizedBox(
                         height: 20,
@@ -60,6 +64,8 @@ class _SeriesPageState extends State<SeriesPage> {
                       SeriesCarousel(
                         carouselTitle: 'Populares',
                         series: series.popular,
+                        onLongPress: (favorite) =>
+                            controller.saveFavorite(favorite),
                       ),
                       const SizedBox(
                         height: 20,
@@ -67,6 +73,8 @@ class _SeriesPageState extends State<SeriesPage> {
                       SeriesCarousel(
                         carouselTitle: 'Passando na TV',
                         series: series.onTheAir,
+                        onLongPress: (favorite) =>
+                            controller.saveFavorite(favorite),
                       ),
                       const SizedBox(
                         height: 20,
