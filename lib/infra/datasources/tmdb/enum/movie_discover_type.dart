@@ -1,8 +1,8 @@
 enum MovieDiscoverType {
-  nowPlaying('airing_today'),
-  popular('airing_today'),
-  topRated('airing_today'),
-  upComing('airing_today');
+  nowPlaying('now_playing'),
+  popular('popular'),
+  topRated('top_rated'),
+  upComing('upcoming');
 
   const MovieDiscoverType(this.value);
   final String value;

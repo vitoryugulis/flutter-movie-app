@@ -1,4 +1,4 @@
-import 'package:flutter_movie_app/domain/entities/movies_entity.dart';
+import 'package:flutter_movie_app/domain/entities/movies/movies_entity.dart';
 import 'package:flutter_movie_app/infra/models/movie_genres_model.dart';
 
 class MoviesModel extends MoviesEntity {

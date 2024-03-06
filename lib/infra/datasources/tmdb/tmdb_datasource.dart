@@ -72,7 +72,7 @@ class TMDBDatasource implements ContentDatasource {
   @override
   Future<Either<Exception, DiscoverMoviesModel>> discoverMovies() async {
     final headers = {'Authorization': 'Bearer $token'};
-    final queryParams = {'language': 'pt', 'page': 1};
+    final queryParams = {'language': 'pt', 'page': '1'};
     final nowPlaying = '3/movie/${MovieDiscoverType.nowPlaying.value}';
     final popular = '3/movie/${MovieDiscoverType.popular.value}';
     final topRated = '3/movie/${MovieDiscoverType.topRated.value}';
@@ -107,7 +107,7 @@ class TMDBDatasource implements ContentDatasource {
   @override
   Future<Either<Exception, DiscoverSeriesModel>> discoverSeries() async {
     final headers = {'Authorization': 'Bearer $token'};
-    final queryParams = {'language': 'pt', 'page': 1};
+    final queryParams = {'language': 'pt', 'page': '1'};
     final topRated = '3/tv/${SeriesDiscoverType.topRated.value}';
     final airingToday = '3/tv/${SeriesDiscoverType.airingToday.value}';
     final onTheAir = '3/tv/${SeriesDiscoverType.onTheAir.value}';

@@ -33,13 +33,14 @@ class ResultEntity {
   List<int> genreIds;
   int id;
   String originalLanguage;
-   String originalTitle;
-   String overview;
-   double popularity;
-   String posterPath;
-   String releaseDate;
-   String title;
-   bool video;
-   double voteAverage;
-   int voteCount;
+  String originalTitle;
+  String overview;
+  double popularity;
+  String posterPath;
+  String releaseDate;
+  String title;
+  bool video;
+  double voteAverage;
+  int voteCount;
+  String get fullPath => 'https://image.tmdb.org/t/p/w500/$posterPath';
 }

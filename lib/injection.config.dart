@@ -13,10 +13,13 @@ import 'package:injectable/injectable.dart' as _i2;
 
 import 'domain/repositories/content_repository.dart' as _i5;
 import 'domain/use_cases/load_app_configuration_use_case.dart' as _i7;
+import 'domain/use_cases/show_movies_use_case.dart' as _i9;
 import 'infra/datasources/content_datasource.dart' as _i3;
 import 'infra/datasources/tmdb/tmdb_datasource.dart' as _i4;
 import 'infra/repositories/content_repository_impl.dart' as _i6;
-import 'presenter/pages/splash/splash_controller.dart' as _i8;
+import 'presenter/pages/movies/movies_controller.dart' as _i11;
+import 'presenter/pages/splash/splash_controller.dart' as _i10;
+import 'presenter/utils/navigation.dart' as _i8;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -34,8 +37,15 @@ extension GetItInjectableX on _i1.GetIt {
         _i6.ContentRepositoryImpl(gh<_i3.ContentDatasource>()));
     gh.singleton<_i7.LoadAppConfigurationUseCase>(
         _i7.LoadAppConfigurationUseCaseImpl(gh<_i5.ContentRepository>()));
-    gh.singleton<_i8.SplashController>(
-        _i8.SplashController(gh<_i7.LoadAppConfigurationUseCase>()));
+    gh.singleton<_i8.Navigation>(_i8.Navigation());
+    gh.singleton<_i9.ShowMoviesUseCase>(
+        _i9.ShowMoviesUseCaseImpl(gh<_i5.ContentRepository>()));
+    gh.singleton<_i10.SplashController>(_i10.SplashController(
+      gh<_i7.LoadAppConfigurationUseCase>(),
+      gh<_i8.Navigation>(),
+    ));
+    gh.lazySingleton<_i11.MoviesController>(
+        () => _i11.MoviesController(gh<_i9.ShowMoviesUseCase>()));
     return this;
   }
 }
