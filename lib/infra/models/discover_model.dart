@@ -11,8 +11,8 @@ class DiscoverModel extends DiscoverEntity {
   DiscoverModel.fromJson(Map<String, dynamic> json)
       : super(
           page: json['page'] ?? '',
-          results: List<Results>.from(
-            json['results']?.map((x) => Results.fromJson(x)),
+          results: List<ResultModel>.from(
+            json['results']?.map((x) => ResultModel.fromJson(x)),
           ),
           totalPages: json['total_pages'] ?? '',
           totalResults: json['total_results'] ?? '',
@@ -28,8 +28,8 @@ class DiscoverModel extends DiscoverEntity {
   }
 }
 
-class Results extends ResultEntity {
-  Results({
+class ResultModel extends ResultEntity {
+  ResultModel({
     required super.adult,
     required super.backdropPath,
     required super.genreIds,
@@ -47,7 +47,7 @@ class Results extends ResultEntity {
     required super.voteCount,
   });
 
-  Results.fromJson(Map<String, dynamic> json)
+  ResultModel.fromJson(Map<String, dynamic> json)
       : super(
           adult: json['adult'] ?? '',
           backdropPath: json['backdrop_path'] ?? '',
@@ -65,4 +65,43 @@ class Results extends ResultEntity {
           voteAverage: json['vote_average'] ?? 0,
           voteCount: json['vote_count'] ?? 0,
         );
+
+  ResultModel.fromResultEntity(ResultEntity entity)
+      : this(
+          adult: entity.adult,
+          backdropPath: entity.backdropPath,
+          genreIds: entity.genreIds,
+          id: entity.id,
+          originalLanguage: entity.originalLanguage,
+          originalTitle: entity.originalTitle,
+          firstAirDate: entity.firstAirDate,
+          overview: entity.overview,
+          popularity: entity.popularity,
+          posterPath: entity.posterPath,
+          releaseDate: entity.releaseDate,
+          title: entity.title,
+          video: entity.video,
+          voteAverage: entity.voteAverage,
+          voteCount: entity.voteCount,
+        );
+
+  Map<String, dynamic> toMap() {
+    return {
+      'adult': adult,
+      'backdrop_path': backdropPath,
+      'genre_ids': genreIds,
+      'id': id,
+      'original_language': originalLanguage,
+      'original_title': originalTitle,
+      'first_air_date': firstAirDate,
+      'overview': overview,
+      'popularity': popularity,
+      'poster_path': posterPath,
+      'release_date': releaseDate,
+      'title': title,
+      'video': video,
+      'vote_average': voteAverage,
+      'vote_count': voteCount,
+    };
+  }
 }
