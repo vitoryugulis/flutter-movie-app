@@ -41,8 +41,11 @@ class _HomePageState extends State<HomePage> {
                       const SizedBox(height: 10),
                       GestureDetector(
                         onTap: () => homeController.toMoviesPage(),
-                        child: Lottie.asset(moviesLottie,
-                            width: 200, fit: BoxFit.fill),
+                        child: Lottie.asset(
+                          moviesLottie,
+                          width: 200,
+                          fit: BoxFit.fill,
+                        ),
                       ),
                       const SizedBox(height: 25),
                       Text(
@@ -52,8 +55,11 @@ class _HomePageState extends State<HomePage> {
                       const SizedBox(height: 10),
                       GestureDetector(
                         onTap: () => homeController.toSeriesPage(),
-                        child: Lottie.asset(tvSeriesLottie,
-                            width: 200, fit: BoxFit.fill),
+                        child: Lottie.asset(
+                          tvSeriesLottie,
+                          width: 200,
+                          fit: BoxFit.fill,
+                        ),
                       ),
                       const SizedBox(height: 25),
                       Text(
@@ -61,7 +67,14 @@ class _HomePageState extends State<HomePage> {
                         style: Styles.mdText,
                       ),
                       const SizedBox(height: 10),
-                      Lottie.asset(favorites, width: 200, fit: BoxFit.fill),
+                      GestureDetector(
+                        onTap: () => homeController.toFavoritesPage(),
+                        child: Lottie.asset(
+                          favorites,
+                          width: 200,
+                          fit: BoxFit.fill,
+                        ),
+                      ),
                     ],
                   ),
                 ],

@@ -6,6 +6,6 @@ import 'package:flutter_movie_app/presenter/main_widget.dart';
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
-  configureDependencies();
+  await configureDependencies();
   runApp(const FlutterMovieApp());
 }

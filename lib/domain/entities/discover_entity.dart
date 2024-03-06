@@ -44,5 +44,6 @@ class ResultEntity {
   bool video;
   double voteAverage;
   int voteCount;
-  String get fullPath => 'https://image.tmdb.org/t/p/w500/$posterPath';
+  String get posterFullPath => 'https://image.tmdb.org/t/p/w500/$posterPath';
+  String get backdropFullPath => 'https://image.tmdb.org/t/p/w780/$backdropPath';
 }

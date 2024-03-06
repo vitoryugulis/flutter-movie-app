@@ -2,6 +2,7 @@ import 'package:flutter_movie_app/domain/entities/discover_entity.dart';
 import 'package:flutter_movie_app/domain/repositories/local_storage_repository.dart';
 import 'package:flutter_movie_app/infra/datasources/local_storage_datasource.dart';
 import 'package:flutter_movie_app/infra/models/discover_model.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:injectable/injectable.dart';
 
 @Singleton(as: LocalStorageRepository)
@@ -14,7 +15,7 @@ class LocalStorageRepositoryImpl extends LocalStorageRepository {
   }
 
   @override
-  List<ResultEntity> retrieveFavorites() {
+  Either<Exception, List<ResultEntity>> retrieveFavorites() {
     return datasource.retrieveFavorites();
   }
 

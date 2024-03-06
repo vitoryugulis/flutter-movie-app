@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_movie_app/presenter/pages/favorites/favorites_page.dart';
 import 'package:flutter_movie_app/presenter/pages/movies/movies_page.dart';
 import 'package:flutter_movie_app/presenter/pages/series/series_page.dart';
 import 'package:flutter_movie_app/presenter/utils/navigation.dart';
@@ -11,4 +12,5 @@ class HomeController extends ChangeNotifier {
 
   void toSeriesPage() => _navigation.go(SeriesPage.route);
   void toMoviesPage() => _navigation.go(MoviesPage.route);
+  void toFavoritesPage() => _navigation.go(FavoritesPage.route);
 }

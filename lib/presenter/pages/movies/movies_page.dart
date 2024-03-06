@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_movie_app/injection.dart';
 import 'package:flutter_movie_app/presenter/pages/movies/movies_controller.dart';
-import 'package:flutter_movie_app/presenter/pages/movies/widgets/movies_carousel.dart';
+import 'package:flutter_movie_app/presenter/pages/movies/widgets/movies_carousel_widget.dart';
 import 'package:flutter_movie_app/presenter/shared_widgets/failure_widget.dart';
 import 'package:flutter_movie_app/presenter/shared_widgets/loading_widget.dart';
 import 'package:flutter_movie_app/presenter/states/app_states.dart';
@@ -46,23 +46,39 @@ class _MoviesPageState extends State<MoviesPage> {
                       MoviesCarousel(
                         carouselTitle: 'Em cartaz',
                         movies: movies.nowPlaying,
+                        onLongPress: (favorite) =>
+                            controller.saveFavorite(favorite),
                       ),
-                      const SizedBox(height: 20,),
+                      const SizedBox(
+                        height: 20,
+                      ),
                       MoviesCarousel(
                         carouselTitle: 'Mais bem avaliados',
                         movies: movies.topRated,
+                        onLongPress: (favorite) =>
+                            controller.saveFavorite(favorite),
                       ),
-                      const SizedBox(height: 20,),
+                      const SizedBox(
+                        height: 20,
+                      ),
                       MoviesCarousel(
                         carouselTitle: 'Populares',
                         movies: movies.popular,
+                        onLongPress: (favorite) =>
+                            controller.saveFavorite(favorite),
                       ),
-                      const SizedBox(height: 20,),
+                      const SizedBox(
+                        height: 20,
+                      ),
                       MoviesCarousel(
                         carouselTitle: 'Próximas estreias',
                         movies: movies.upComing,
+                        onLongPress: (favorite) =>
+                            controller.saveFavorite(favorite),
                       ),
-                      const SizedBox(height: 20,),
+                      const SizedBox(
+                        height: 20,
+                      ),
                     ],
                   ),
                 );

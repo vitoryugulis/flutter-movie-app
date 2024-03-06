@@ -18,15 +18,18 @@ class SplashController extends ChangeNotifier {
 
   Future<Either<Exception, AppConfigurationEntity>> loadConfiguration() async {
     final result = await _loadAppConfigurationUseCase();
-    return await result.fold((failure) {
-      appState = FailureState();
-      notifyListeners();
-      return Left(failure);
-    }, (configuration) async {
-      GetIt.instance.registerSingleton<AppConfigurationEntity>(configuration);
-      await Future.delayed(const Duration(seconds: 1));
-      _navigation.go(HomePage.route);
-      return Right(configuration);
-    });
+    return await result.fold(
+      (failure) {
+        appState = FailureState();
+        notifyListeners();
+        return Left(failure);
+      },
+      (configuration) async {
+        GetIt.instance.registerSingleton<AppConfigurationEntity>(configuration);
+        await Future.delayed(const Duration(seconds: 1));
+        _navigation.go(HomePage.route);
+        return Right(configuration);
+      },
+    );
   }
 }
